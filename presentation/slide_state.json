@@ -1,9 +1,9 @@
 {
   "project_info": {
-    "title": "Automação e Análise de Dados do SUS (SIH/SIA)",
-    "created": 1775678272.0725415,
-    "last_updated": 1775678927.6138186,
-    "total_slides": 12
+    "title": "Projeto: Monitoramento de Produção Hospitalar e Ambulatorial (SUS)",
+    "created": 1775681966.1901484,
+    "last_updated": 1775682164.9390156,
+    "total_slides": 15
   },
   "slides": [
     {
@@ -23,132 +23,168 @@
     },
     {
       "id": "slide_4_robo_extracao",
-      "state": "edited",
+      "state": "edit_pending",
       "pageNum": 4
     },
     {
-      "id": "slide_5_armazenamento",
-      "state": "edited",
+      "id": "slide_5_estrutura_dados",
+      "state": "edit_pending",
       "pageNum": 5
     },
     {
-      "id": "slide_6_aplicacao_streamlit",
-      "state": "edited",
+      "id": "slide_6_banco_dados",
+      "state": "edit_pending",
       "pageNum": 6
     },
     {
-      "id": "slide_7_resultados_sih",
-      "state": "edited",
+      "id": "slide_7_aplicacao_streamlit",
+      "state": "edit_pending",
       "pageNum": 7
     },
     {
-      "id": "slide_8_resultados_sia",
-      "state": "edited",
+      "id": "slide_8_resultados_sih",
+      "state": "edit_pending",
       "pageNum": 8
     },
     {
-      "id": "slide_9_estatisticas_graficos",
-      "state": "edited",
+      "id": "slide_9_resultados_sia",
+      "state": "edit_pending",
       "pageNum": 9
     },
     {
-      "id": "slide_10_desafios_superacao",
-      "state": "edited",
+      "id": "slide_10_estatisticas_graficos",
+      "state": "edit_pending",
       "pageNum": 10
     },
     {
-      "id": "slide_11_conclusoes",
-      "state": "edited",
+      "id": "slide_11_relatorio_tecnico",
+      "state": "edit_pending",
       "pageNum": 11
     },
     {
-      "id": "slide_12_perguntas_proximos_passos",
-      "state": "edited",
+      "id": "slide_12_conclusoes",
+      "state": "edit_pending",
       "pageNum": 12
+    },
+    {
+      "id": "slide_13_proximos_passos",
+      "state": "edit_pending",
+      "pageNum": 13
+    },
+    {
+      "id": "slide_14_perguntas",
+      "state": "edit_pending",
+      "pageNum": 14
+    },
+    {
+      "id": "slide_15_encerramento",
+      "state": "edit_pending",
+      "pageNum": 15
     }
   ],
   "outline": [
     {
       "id": "slide_1_titulo",
-      "title": "Automação e Análise de Dados do SUS (SIH/SIA)",
-      "summary": "Capa da apresentação com título, subtítulo e autoria.",
+      "title": "Projeto: Monitoramento de Produção Hospitalar e Ambulatorial (SUS)",
+      "summary": "Capa da apresentação com título, ferramentas e autor.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
       "id": "slide_2_objetivos",
-      "title": "Objetivos do Trabalho",
-      "summary": "Principais metas: automação, armazenamento, visualização e documentação.",
+      "title": "Objetivos do Projeto",
+      "summary": "Lista de objetivos principais: automação, armazenamento e visualização.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
       "id": "slide_3_portal_datasus",
-      "title": "O Portal DATASUS TabNet",
-      "summary": "Contextualização da fonte de dados e seus desafios técnicos.",
+      "title": "O Portal DATASUS e o TabNet",
+      "summary": "Explicação sobre a fonte de dados e os desafios de extração.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
       "id": "slide_4_robo_extracao",
-      "title": "Metodologia: Robô de Extração",
-      "summary": "Uso do Playwright para automação de navegação e extração de CSV.",
+      "title": "Robô de Extração de Dados",
+      "summary": "Detalhes técnicos do robô desenvolvido com Playwright.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
-      "id": "slide_5_armazenamento",
-      "title": "Metodologia: Armazenamento (SQLite)",
-      "summary": "Processamento com Pandas e persistência em banco de dados relacional.",
+      "id": "slide_5_estrutura_dados",
+      "title": "Estrutura e Filtros de Dados",
+      "summary": "Descrição dos filtros aplicados para SIH e SIA.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
-      "id": "slide_6_aplicacao_streamlit",
-      "title": "Aplicação Streamlit",
-      "summary": "Interface interativa para análise de indicadores de saúde.",
+      "id": "slide_6_banco_dados",
+      "title": "Armazenamento em Banco de Dados",
+      "summary": "Uso de SQLite e processo de ETL (Limpeza e Carga).",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
-      "id": "slide_7_resultados_sih",
+      "id": "slide_7_aplicacao_streamlit",
+      "title": "Aplicação Streamlit Interativa",
+      "summary": "Funcionalidades do dashboard desenvolvido.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_8_resultados_sih",
       "title": "Resultados: Produção Hospitalar (SIH)",
-      "summary": "Análise de AIH por local de internação e valores aprovados.",
+      "summary": "Principais achados sobre internações e custos hospitalares.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
-      "id": "slide_8_resultados_sia",
+      "id": "slide_9_resultados_sia",
       "title": "Resultados: Produção Ambulatorial (SIA)",
-      "summary": "Análise de procedimentos ambulatoriais por município.",
+      "summary": "Principais achados sobre atendimentos ambulatoriais.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
-      "id": "slide_9_estatisticas_graficos",
-      "title": "Análise Estatística e Gráficos",
-      "summary": "Visualizações de distribuição de custos e top municípios.",
+      "id": "slide_10_estatisticas_graficos",
+      "title": "Estatísticas e Visualizações",
+      "summary": "Exemplos de gráficos e métricas geradas pelo sistema.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
-      "id": "slide_10_desafios_superacao",
-      "title": "Desafios e Superação",
-      "summary": "Soluções para timeouts e limpeza de dados não estruturados.",
+      "id": "slide_11_relatorio_tecnico",
+      "title": "Relatório Técnico em LaTeX",
+      "summary": "Destaques do relatório detalhado de 29 páginas.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
-      "id": "slide_11_conclusoes",
-      "title": "Conclusões",
-      "summary": "Eficiência do sistema e confiabilidade das informações.",
+      "id": "slide_12_conclusoes",
+      "title": "Conclusões e Benefícios",
+      "summary": "Vantagens da automação e centralização dos dados.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
     {
-      "id": "slide_12_perguntas_proximos_passos",
-      "title": "Perguntas e Próximos Passos",
-      "summary": "Expansão do projeto e integração de novos dados.",
+      "id": "slide_13_proximos_passos",
+      "title": "Próximos Passos e Expansão",
+      "summary": "Sugestões de melhorias e novas integrações.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_14_perguntas",
+      "title": "Dúvidas e Contato",
+      "summary": "Espaço para perguntas e informações de contato.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_15_encerramento",
+      "title": "Encerramento",
+      "summary": "Finalização da apresentação.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     }

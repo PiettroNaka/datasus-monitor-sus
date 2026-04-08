@@ -1,110 +1,111 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; }
         .slide-container {
             width: 1280px;
-            min-height: 720px; /* must keep */
-            background-color: #FFFFFF;
+            min-height: 720px;
+            background: #FFFFFF;
             font-family: 'Inter', sans-serif;
-            color: #718096;
+            color: #334155;
             position: relative;
-            overflow: hidden;
+        }
+        .accent-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: #3B82F6;
         }
         .header {
-            padding-top: 60px; /* do not shrink */
+            padding-top: 60px;
             padding-left: 80px;
         }
         h2 {
-            font-family: 'Space Grotesk', monospace;
+            font-family: 'Montserrat', sans-serif;
             font-size: 48px;
-            color: #2D3748;
-            margin-bottom: 0;
+            color: #0F172A;
+            margin-bottom: 10px;
         }
-        .accent-bar {
+        .divider {
             width: 100px;
-            height: 8px;
-            background-color: #38B2AC;
-            margin-top: 10px;
+            height: 4px;
+            background: #F59E0B;
+            margin-bottom: 40px;
         }
-        .main-content {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            padding-top: 52px; /* reduced from 60 to save height */
+        .content {
+            padding-top: 20px;
             padding-left: 80px;
-            gap: 40px; /* reduced gap */
+            padding-right: 80px;
+            max-width: 900px;
         }
-        .description p {
-            font-size: 22px;
-            line-height: 1.6;
-            margin-bottom: 20px; /* reduced spacing */
-        }
-        .highlights-box {
-            background-color: #EDF2F7;
-            padding-top: 28px; /* reduced from 40 */
-            padding-bottom: 28px;
-            padding-left: 32px; /* slightly reduced */
-            padding-right: 32px;
-            border-radius: 8px;
-            min-height: 360px; /* reduced to help overall height */
-        }
-        .highlights-box h3 {
-            font-family: 'Space Grotesk', monospace;
+        .intro-text {
             font-size: 24px;
-            color: #2D3748;
-            margin-bottom: 16px;
+            line-height: 1.6;
+            margin-bottom: 40px;
         }
-        .highlight-item {
-            margin-bottom: 16px; /* reduced spacing */
-            display: flex;
-            align-items: center;
+        .highlight-box {
+            border-top: 2px solid #3B82F6;
+            padding-top: 20px;
+            margin-top: 40px;
         }
-        .highlight-item i {
-            color: #38B2AC;
-            margin-right: 12px;
+        .highlight-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            color: #3B82F6;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .highlight-desc {
             font-size: 20px;
+            font-weight: 600;
+            color: #0F172A;
         }
-        .geometric-circle {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background-color: #38B2AC;
-            opacity: 0.05;
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
+        .points {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .point {
+            flex: 1;
+        }
+        .point-title {
+            font-weight: 600;
+            color: #0F172A;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <div class="slide-container">
-        <div class="geometric-circle"></div>
+        <div class="accent-bar"></div>
         <div class="header">
-            <h2>O Portal DATASUS TabNet</h2>
-            <div class="accent-bar"></div>
+            <h2>O Portal DATASUS e o TabNet</h2>
+            <div class="divider"></div>
         </div>
-        <div class="main-content">
-            <div class="description">
-                <p>O TabNet é uma ferramenta genérica de tabulação de dados que permite gerar tabelas a partir de arquivos DBF, amplamente utilizada pelo Ministério da Saúde para disseminar informações do SUS.</p>
-                <p>É a principal interface para consulta de dados de produção hospitalar (SIH) e ambulatorial (SIA), essencial para a gestão pública de saúde no Brasil.</p>
+        <div class="content">
+            <p class="intro-text">
+                O DATASUS é o principal repositório de dados de saúde pública do Brasil, centralizando informações de mortalidade, internações, atendimentos e recursos financeiros.
+            </p>
+            
+            <div class="points">
+                <div class="point">
+                    <div class="point-title">Sistema TabNet</div>
+                    <p>Ferramenta web que permite gerar tabulações customizadas a partir das bases de dados do SUS.</p>
+                </div>
+                <div class="point">
+                    <div class="point-title">Desafios</div>
+                    <p>Interface complexa e processos de extração manuais que dificultam análises em larga escala.</p>
+                </div>
             </div>
-            <div class="highlights-box">
-                <h3>Desafios Técnicos</h3>
-                <div class="highlight-item">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <span>Navegação complexa baseada em frames e scripts legados.</span>
-                </div>
-                <div class="highlight-item">
-                    <i class="fas fa-server"></i>
-                    <span>Instabilidade em consultas de grande volume de dados.</span>
-                </div>
-                <div class="highlight-item">
-                    <i class="fas fa-file-csv"></i>
-                    <span>Saída de dados com metadados que exigem limpeza rigorosa.</span>
-                </div>
+
+            <div class="highlight-box">
+                <span class="highlight-title">ESTRATÉGIA DO PROJETO</span>
+                <p class="highlight-desc">
+                    Superar as barreiras de extração manual através de um robô de automação que interage diretamente com os seletores dinâmicos do TabNet.
+                </p>
             </div>
         </div>
     </div>
