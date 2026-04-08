@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 60px;
+            padding-left: 80px;
+        }
+        h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 48px;
+            color: #2D3748;
+            margin-bottom: 0;
+        }
+        .accent-bar {
+            width: 100px;
+            height: 8px;
+            background-color: #38B2AC;
+            margin-top: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            padding-top: 20px; /* reduced from 50px to save vertical space */
+            padding-left: 80px;
+            gap: 40px;
+        }
+        .info-column {
+            padding-top: 20px;
+        }
+        .info-item {
+            margin-bottom: 18px; /* reduced from 35px to tighten spacing */
+            display: flex;
+            align-items: flex-start;
+        }
+        .info-item i {
+            color: #38B2AC;
+            font-size: 24px;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        .info-text h3 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 22px;
+            color: #2D3748;
+            margin-bottom: 8px;
+        }
+        .info-text p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .chart-column {
+            background-color: #EDF2F7;
+            padding-top: 30px; /* slightly reduced */
+            padding-left: 30px;
+            padding-right: 30px;
+            border-radius: 8px;
+            height: 400px; /* slightly reduced from 420px to help overall fit */
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .chart-title {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 20px;
+            color: #2D3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .geometric-shape {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #38B2AC;
+            opacity: 0.03;
+            top: -150px;
+            right: -150px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="geometric-shape"></div>
+        <div class="header">
+            <h2>Resultados: Produção Ambulatorial (SIA)</h2>
+            <div class="accent-bar"></div>
+        </div>
+        <div class="main-content">
+            <div class="info-column">
+                <div class="info-item">
+                    <i class="fas fa-hospital-user"></i>
+                    <div class="info-text">
+                        <h3>Local de Atendimento</h3>
+                        <p>Dados consolidados por município de atendimento a partir de 2008.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <div class="info-text">
+                        <h3>Abrangência Geográfica</h3>
+                        <p>Análise detalhada por Região, UF e Município em todo o território nacional.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-coins"></i>
+                    <div class="info-text">
+                        <h3>Métricas de Produção</h3>
+                        <p>Monitoramento de Quantidade Aprovada e Valor Aprovado por subgrupo de procedimento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-column">
+                <div class="chart-title">Tendência de Atendimentos Ambulatoriais (Simulação)</div>
+                <div style="height: 320px;">
+                    <canvas id="siaChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('siaChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan/24', 'Abr/24', 'Jul/24', 'Out/24', 'Jan/25', 'Abr/25'],
+                datasets: [{
+                    label: 'Qtd. Aprovada',
+                    data: [45000, 52000, 48000, 61000, 55000, 59000],
+                    borderColor: '#38B2AC',
+                    backgroundColor: 'rgba(56, 178, 172, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#E2E8F0' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

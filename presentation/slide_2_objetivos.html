@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body{margin:0}
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 60px; /* do not change */
+            padding-left: 80px;
+        }
+        h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 48px;
+            color: #2D3748;
+            margin-bottom: 0;
+        }
+        .accent-bar {
+            width: 100px;
+            height: 8px;
+            background-color: #38B2AC;
+            margin-top: 10px;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 56px; /* reduced from 80 */
+            padding-left: 80px;
+            gap: 24px; /* reduced from 40 */
+        }
+        .objective-item {
+            margin-bottom: 24px; /* reduced from 40 */
+            display: flex;
+            align-items: flex-start;
+        }
+        .icon-box {
+            width: 52px;
+            height: 52px;
+            background-color: #EDF2F7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            color: #38B2AC;
+            font-size: 22px;
+        }
+        .text-box h3 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 24px;
+            color: #2D3748;
+            margin-bottom: 8px;
+        }
+        .text-box p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin:0;
+        }
+        .visual-element {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 360px; /* slightly smaller */
+            height: 360px;
+            background-color: #EDF2F7;
+            clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Objetivos do Trabalho</h2>
+            <div class="accent-bar"></div>
+        </div>
+        <div class="content-grid">
+            <div class="objectives-list">
+                <div class="objective-item">
+                    <div class="icon-box"><i class="fas fa-robot"></i></div>
+                    <div class="text-box">
+                        <h3>Automação de Extração</h3>
+                        <p>Desenvolver um robô resiliente para coletar dados do DATASUS TabNet programaticamente.</p>
+                    </div>
+                </div>
+                <div class="objective-item">
+                    <div class="icon-box"><i class="fas fa-database"></i></div>
+                    <div class="text-box">
+                        <h3>Persistência de Dados</h3>
+                        <p>Estruturar um banco SQLite para armazenamento histórico seguro e eficiente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="objectives-list">
+                <div class="objective-item">
+                    <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                    <div class="text-box">
+                        <h3>Visualização Interativa</h3>
+                        <p>Criar um dashboard em Streamlit para análise dinâmica de indicadores.</p>
+                    </div>
+                </div>
+                <div class="objective-item">
+                    <div class="icon-box"><i class="fas fa-file-alt"></i></div>
+                    <div class="text-box">
+                        <h3>Documentação Técnica</h3>
+                        <p>Elaborar relatório técnico em LaTeX com metodologia, códigos e resultados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="visual-element"></div>
+    </div>
+</body>
+</html>

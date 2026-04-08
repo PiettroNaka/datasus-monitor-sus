@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 60px;
+            padding-left: 80px;
+        }
+        h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 48px;
+            color: #2D3748;
+            margin-bottom: 0;
+        }
+        .accent-bar {
+            width: 100px;
+            height: 8px;
+            background-color: #38B2AC;
+            margin-top: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            /* reduced top padding to bring content up and keep total height < 720px */
+            padding-top: 34px;
+            padding-left: 80px;
+            gap: 50px;
+        }
+        .step-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .step-number {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 24px;
+            color: #38B2AC;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        .step-text h3 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 22px;
+            color: #2D3748;
+            margin-bottom: 8px;
+        }
+        .step-text p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .code-block {
+            background-color: #2D3748;
+            color: #EDF2F7;
+            padding-top: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 16px;
+            line-height: 1.4;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            min-height: 400px;
+        }
+        .code-comment { color: #718096; }
+        .code-keyword { color: #38B2AC; }
+        .geometric-square {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #EDF2F7;
+            bottom: -50px;
+            left: -50px;
+            transform: rotate(45deg);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="geometric-square"></div>
+        <div class="header">
+            <h2 style="width: 1198.16px; min-width: 1198.16px; max-width: 1198.16px; transform: translate(1.84379px, 0px);">Metodologia: Robô de Extração</h2>
+            <div class="accent-bar"></div>
+        </div>
+        <div class="main-content" style="transform: translate(0px, -36.8758px);">
+            <div class="steps">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-text">
+                        <h3>Navegação Playwright</h3>
+                        <p>Uso de automação assíncrona para lidar com a interface complexa do TabNet.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-text">
+                        <h3>Seleção de Parâmetros</h3>
+                        <p>Configuração dinâmica de Linha (Município), Coluna (Subgrupo) e Períodos.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-text">
+                        <h3>Captura de CSV</h3>
+                        <p>Extração direta do conteúdo pré-formatado para processamento posterior.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="code-display">
+                <div class="code-block">
+                    <span class="code-comment"># Exemplo de lógica do robô</span><br>
+                    <span class="code-keyword">async with</span> async_playwright() <span class="code-keyword">as</span> p:<br>
+                    &nbsp;&nbsp;browser = <span class="code-keyword">await</span> p.chromium.launch()<br>
+                    &nbsp;&nbsp;page = <span class="code-keyword">await</span> browser.new_page()<br>
+                    &nbsp;&nbsp;<span class="code-keyword">await</span> page.goto(url)<br>
+                    &nbsp;&nbsp;<span class="code-keyword">await</span> page.select_option(<span class="code-keyword">'select#L'</span>, index=3)<br>
+                    &nbsp;&nbsp;<span class="code-keyword">await</span> page.click(<span class="code-keyword">'input[type="submit"]'</span>)<br>
+                    &nbsp;&nbsp;content = <span class="code-keyword">await</span> page.inner_text(<span class="code-keyword">'pre'</span>)<br>
+                    &nbsp;&nbsp;<span class="code-keyword">await</span> browser.close()
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

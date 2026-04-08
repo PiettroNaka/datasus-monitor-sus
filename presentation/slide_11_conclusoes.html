@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 60px;
+            padding-left: 80px;
+        }
+        h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 48px;
+            color: #2D3748;
+            margin-bottom: 0;
+        }
+        .accent-bar {
+            width: 100px;
+            height: 8px;
+            background-color: #38B2AC;
+            margin-top: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            padding-top: 30px; /* reduced to save vertical space */
+            padding-left: 80px;
+            gap: 40px; /* slightly smaller gap */
+        }
+        .conclusion-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .conclusion-item {
+            margin-bottom: 18px; /* reduced spacing between items */
+            display: flex;
+            align-items: flex-start;
+        }
+        .conclusion-item i {
+            color: #38B2AC;
+            font-size: 24px;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        .conclusion-text h3 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 24px;
+            color: #2D3748;
+            margin-bottom: 8px;
+        }
+        .conclusion-text p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .impact-box {
+            background-color: #EDF2F7;
+            padding-top: 20px; /* reduced padding */
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            min-height: 300px; /* reduced height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .impact-value {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 72px;
+            color: #38B2AC;
+            margin-bottom: 10px;
+        }
+        .impact-label {
+            font-size: 22px;
+            color: #2D3748;
+            font-weight: 500;
+        }
+        .geometric-accent {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-color: #EDF2F7;
+            opacity: 0.3;
+            bottom: -200px;
+            right: -100px;
+            transform: rotate(15deg);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="geometric-accent"></div>
+        <div class="header">
+            <h2>Conclusões</h2>
+            <div class="accent-bar"></div>
+        </div>
+        <div class="main-content">
+            <div class="conclusion-list">
+                <div class="conclusion-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="conclusion-text">
+                        <h3>Eficiência Operacional</h3>
+                        <p>A automação reduziu drasticamente o tempo de coleta e tabulação manual de dados do DATASUS.</p>
+                    </div>
+                </div>
+                <div class="conclusion-item">
+                    <i class="fas fa-database"></i>
+                    <div class="conclusion-text">
+                        <h3>Confiabilidade Técnica</h3>
+                        <p>O pipeline de ETL garante dados limpos, normalizados e prontos para análise estatística rigorosa.</p>
+                    </div>
+                </div>
+                <div class="conclusion-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <div class="conclusion-text">
+                        <h3>Suporte à Decisão</h3>
+                        <p>Visualizações interativas permitem identificar gargalos e tendências na saúde pública com agilidade.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="impact-box">
+                <div class="impact-value">90%</div>
+                <div class="impact-label">Redução no Tempo de Coleta</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

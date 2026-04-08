@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 60px;
+            padding-left: 80px;
+        }
+        h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 48px;
+            color: #2D3748;
+            margin-bottom: 0;
+        }
+        .accent-bar {
+            width: 100px;
+            height: 8px;
+            background-color: #38B2AC;
+            margin-top: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 50px;
+            padding-left: 80px;
+            gap: 60px;
+        }
+        .challenge-section h3 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 24px;
+            color: #2D3748;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+        .challenge-section h3 i {
+            margin-right: 15px;
+            color: #38B2AC;
+        }
+        .challenge-item {
+            background-color: #EDF2F7;
+            padding-top: 20px;
+            padding-left: 25px;
+            padding-right: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .challenge-item h4 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 18px;
+            color: #2D3748;
+            margin-bottom: 8px;
+        }
+        .challenge-item p {
+            font-size: 16px;
+            line-height: 1.5;
+            padding-bottom: 20px;
+        }
+        .solution-section {
+            position: relative;
+        }
+        .solution-box {
+            border-left: 4px solid #38B2AC;
+            padding-left: 30px;
+            padding-top: 10px;
+        }
+        .solution-item {
+            margin-bottom: 35px;
+        }
+        .solution-item h4 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 20px;
+            color: #38B2AC;
+            margin-bottom: 10px;
+        }
+        .solution-item p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .geometric-shape {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: #EDF2F7;
+            opacity: 0.4;
+            top: -150px;
+            right: -150px;
+            border-radius: 50%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="geometric-shape"></div>
+        <div class="header">
+            <h2>Desafios e Superação</h2>
+            <div class="accent-bar"></div>
+        </div>
+        <div class="main-content">
+            <div class="challenge-section">
+                <h3><i class="fas fa-exclamation-circle"></i> Obstáculos Identificados</h3>
+                <div class="challenge-item">
+                    <h4>Timeouts de Servidor</h4>
+                    <p>O portal TabNet apresenta instabilidade ao processar consultas que abrangem muitos meses simultaneamente.</p>
+                </div>
+                <div class="challenge-item">
+                    <h4>Dados Não Estruturados</h4>
+                    <p>Os arquivos CSV exportados contêm metadados e notas de rodapé mesclados aos dados tabulares.</p>
+                </div>
+            </div>
+            <div class="solution-section">
+                <div class="solution-box">
+                    <div class="solution-item">
+                        <h4>Processamento em Lotes</h4>
+                        <p>Implementação de extração segmentada por períodos menores para garantir a estabilidade da conexão.</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>Pipeline de Limpeza (ETL)</h4>
+                        <p>Uso de Regex e Pandas para identificar e remover automaticamente linhas de metadados e totais inconsistentes.</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4>Automação Resiliente</h4>
+                        <p>Configuração de retentativas automáticas e esperas inteligentes (Smart Waits) no Playwright.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

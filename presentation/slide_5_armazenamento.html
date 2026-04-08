@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 60px;
+            padding-left: 80px;
+        }
+        h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 48px;
+            color: #2D3748;
+            margin-bottom: 0;
+        }
+        .accent-bar {
+            width: 100px;
+            height: 8px;
+            background-color: #38B2AC;
+            margin-top: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 50px;
+            padding-left: 80px;
+            gap: 50px;
+        }
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: #38B2AC;
+            color: white;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .step-text h3 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 22px;
+            color: #2D3748;
+            margin-bottom: 5px;
+        }
+        .step-text p {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        .tech-details {
+            background-color: #EDF2F7;
+            padding-top: 40px;
+            padding-left: 40px;
+            padding-right: 40px;
+            min-height: 400px;
+            position: relative;
+        }
+        .tech-details h3 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 24px;
+            color: #2D3748;
+            margin-bottom: 25px;
+        }
+        .tech-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .tech-item i {
+            color: #38B2AC;
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 18px;
+        }
+        .geometric-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: #EDF2F7;
+            bottom: -100px;
+            left: -100px;
+            transform: rotate(45deg);
+            z-index: -1;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="geometric-bg"></div>
+        <div class="header">
+            <h2>Metodologia: Armazenamento (SQLite)</h2>
+            <div class="accent-bar"></div>
+        </div>
+        <div class="main-content">
+            <div class="process-flow">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-text">
+                        <h3>Limpeza com Pandas</h3>
+                        <p>Remoção de cabeçalhos e rodapés de metadados do TabNet para isolar os dados tabulares.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-text">
+                        <h3>Normalização</h3>
+                        <p>Conversão de tipos de dados, tratamento de separadores decimais e milhares (padrão PT-BR).</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-text">
+                        <h3>Carga (ETL)</h3>
+                        <p>Inserção automatizada nas tabelas relacionais via SQLAlchemy/SQLite3.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-details">
+                <h3>Arquitetura do Banco</h3>
+                <div class="tech-item">
+                    <i class="fas fa-database"></i>
+                    <span><strong>SQLite:</strong> Banco de dados leve, sem servidor, ideal para portabilidade do projeto.</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-table"></i>
+                    <span><strong>Tabelas:</strong> Estruturas separadas para SIH_DATA e SIA_DATA com chaves primárias por município.</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span><strong>Integridade:</strong> Garantia de que dados nulos ou inconsistentes sejam tratados antes da persistência.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

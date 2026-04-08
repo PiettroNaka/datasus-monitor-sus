@@ -1,0 +1,156 @@
+{
+  "project_info": {
+    "title": "Automação e Análise de Dados do SUS (SIH/SIA)",
+    "created": 1775678272.0725415,
+    "last_updated": 1775678927.6138186,
+    "total_slides": 12
+  },
+  "slides": [
+    {
+      "id": "slide_1_titulo",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "slide_2_objetivos",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "slide_3_portal_datasus",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "slide_4_robo_extracao",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "slide_5_armazenamento",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "slide_6_aplicacao_streamlit",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "slide_7_resultados_sih",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "slide_8_resultados_sia",
+      "state": "edited",
+      "pageNum": 8
+    },
+    {
+      "id": "slide_9_estatisticas_graficos",
+      "state": "edited",
+      "pageNum": 9
+    },
+    {
+      "id": "slide_10_desafios_superacao",
+      "state": "edited",
+      "pageNum": 10
+    },
+    {
+      "id": "slide_11_conclusoes",
+      "state": "edited",
+      "pageNum": 11
+    },
+    {
+      "id": "slide_12_perguntas_proximos_passos",
+      "state": "edited",
+      "pageNum": 12
+    }
+  ],
+  "outline": [
+    {
+      "id": "slide_1_titulo",
+      "title": "Automação e Análise de Dados do SUS (SIH/SIA)",
+      "summary": "Capa da apresentação com título, subtítulo e autoria.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_2_objetivos",
+      "title": "Objetivos do Trabalho",
+      "summary": "Principais metas: automação, armazenamento, visualização e documentação.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_3_portal_datasus",
+      "title": "O Portal DATASUS TabNet",
+      "summary": "Contextualização da fonte de dados e seus desafios técnicos.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_4_robo_extracao",
+      "title": "Metodologia: Robô de Extração",
+      "summary": "Uso do Playwright para automação de navegação e extração de CSV.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_5_armazenamento",
+      "title": "Metodologia: Armazenamento (SQLite)",
+      "summary": "Processamento com Pandas e persistência em banco de dados relacional.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_6_aplicacao_streamlit",
+      "title": "Aplicação Streamlit",
+      "summary": "Interface interativa para análise de indicadores de saúde.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_7_resultados_sih",
+      "title": "Resultados: Produção Hospitalar (SIH)",
+      "summary": "Análise de AIH por local de internação e valores aprovados.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_8_resultados_sia",
+      "title": "Resultados: Produção Ambulatorial (SIA)",
+      "summary": "Análise de procedimentos ambulatoriais por município.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_9_estatisticas_graficos",
+      "title": "Análise Estatística e Gráficos",
+      "summary": "Visualizações de distribuição de custos e top municípios.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_10_desafios_superacao",
+      "title": "Desafios e Superação",
+      "summary": "Soluções para timeouts e limpeza de dados não estruturados.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_11_conclusoes",
+      "title": "Conclusões",
+      "summary": "Eficiência do sistema e confiabilidade das informações.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_12_perguntas_proximos_passos",
+      "title": "Perguntas e Próximos Passos",
+      "summary": "Expansão do projeto e integração de novos dados.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    }
+  ]
+}

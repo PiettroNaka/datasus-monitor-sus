@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <style>
+        /* remove default body margin so the slide sits at the very top */
+        body{ margin:0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -8px; /* shift up 8px so the lowest element is < 720px (720 - 8 = 712) */
+        }
+        .bg-shape {
+            position: absolute;
+            background-color: #EDF2F7;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            top: -180px;
+            left: -180px;
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .accent-rect {
+            position: absolute;
+            background-color: #38B2AC;
+            width: 320px;
+            height: 480px;
+            top: 60px;
+            right: -80px;
+            transform: rotate(15deg);
+            z-index: 0;
+            opacity: 0.1;
+        }
+        .content {
+            z-index: 1;
+            max-width: 900px;
+            text-align: left;
+            padding-left: 80px; /* reduced inner padding to tighten layout */
+        }
+        h1 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 64px;
+            color: #2D3748;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .subtitle {
+            font-size: 32px;
+            color: #38B2AC;
+            margin-bottom: 30px; /* slightly reduced spacing */
+            font-weight: 300;
+        }
+        .author {
+            font-size: 20px;
+            border-top: 2px solid #EDF2F7;
+            padding-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="bg-shape"></div>
+        <div class="accent-rect"></div>
+        <div class="content">
+            <h1>Automação e Análise de Dados do SUS (SIH/SIA)</h1>
+            <div class="subtitle">Extração, Armazenamento e Visualização com Playwright, SQLite e Streamlit</div>
+</div>
+    </div>
+</body>
+</html>

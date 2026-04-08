@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 60px;
+            padding-left: 80px;
+        }
+        h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 48px;
+            color: #2D3748;
+            margin-bottom: 0;
+        }
+        .accent-bar {
+            width: 100px;
+            height: 8px;
+            background-color: #38B2AC;
+            margin-top: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 30px; /* reduced from 50px to save vertical space */
+            padding-left: 80px;
+            gap: 40px;
+        }
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .feature-item {
+            margin-top: 18px; /* reduced from 30px to compress vertical spacing */
+            display: flex;
+            align-items: flex-start;
+        }
+        .feature-item i {
+            color: #38B2AC;
+            font-size: 24px;
+            margin-right: 20px;
+            padding-top: 5px;
+        }
+        .feature-text h3 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 24px;
+            color: #2D3748;
+            margin-bottom: 8px;
+        }
+        .feature-text p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .interface-preview {
+            position: relative;
+            padding-top: 12px; /* slightly reduced */
+        }
+        .data-point {
+            background-color: #EDF2F7;
+            padding-top: 12px; /* reduced */
+            padding-left: 25px;
+            padding-right: 25px;
+            margin-bottom: 16px; /* reduced */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            width: 400px;
+        }
+        .data-point .label {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 14px;
+            color: #38B2AC;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .data-point .value {
+            font-size: 32px;
+            color: #2D3748;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        .geometric-overlay {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-color: #EDF2F7;
+            opacity: 0.3;
+            top: 100px;
+            right: -150px;
+            transform: rotate(-15deg);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="geometric-overlay"></div>
+        <div class="header">
+            <h2>Aplicação Streamlit</h2>
+            <div class="accent-bar"></div>
+        </div>
+        <div class="main-content">
+            <div class="feature-list">
+                <div class="feature-item">
+                    <i class="fas fa-list-ul"></i>
+                    <div class="feature-text">
+                        <h3>Listagem Dinâmica</h3>
+                        <p>Visualização tabular dos dados extraídos com suporte a filtros por município e período.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calculator"></i>
+                    <div class="feature-text">
+                        <h3>Estatísticas Automatizadas</h3>
+                        <p>Cálculo instantâneo de médias, desvios e totais para suporte à análise descritiva.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <div class="feature-text">
+                        <h3>Gráficos Interativos</h3>
+                        <p>Visualizações em Plotly que permitem exploração profunda dos indicadores de saúde.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="interface-preview">
+                <div class="data-point">
+                    <div class="label">Total de Registros</div>
+                    <div class="value">25 Meses de Dados</div>
+                </div>
+                <div class="data-point">
+                    <div class="label">Fontes Integradas</div>
+                    <div class="value">SIH + SIA (SUS)</div>
+                </div>
+                <div class="data-point">
+                    <div class="label">Tecnologia</div>
+                    <div class="value">Python & Streamlit</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

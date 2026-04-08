@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            color: #718096;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            padding-top: 60px;
+            padding-left: 80px;
+        }
+        h2 {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 48px;
+            color: #2D3748;
+            margin-bottom: 0;
+        }
+        .accent-bar {
+            width: 100px;
+            height: 8px;
+            background-color: #38B2AC;
+            margin-top: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            padding-top: 50px;
+            padding-left: 80px;
+            gap: 40px;
+        }
+        .metrics-column {
+            padding-top: 20px;
+        }
+        .metric-card {
+            margin-bottom: 30px;
+        }
+        .metric-value {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 42px;
+            color: #38B2AC;
+            margin-bottom: 5px;
+        }
+        .metric-label {
+            font-size: 18px;
+            color: #2D3748;
+            font-weight: 500;
+        }
+        .chart-container {
+            background-color: #EDF2F7;
+            padding-top: 40px;
+            padding-left: 30px;
+            padding-right: 30px;
+            border-radius: 8px;
+            height: 420px;
+            position: relative;
+        }
+        .chart-title {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 20px;
+            color: #2D3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .geometric-accent {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #38B2AC;
+            opacity: 0.1;
+            bottom: -50px;
+            left: -50px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="geometric-accent"></div>
+        <div class="header">
+            <h2>Resultados: Produção Hospitalar (SIH)</h2>
+            <div class="accent-bar"></div>
+        </div>
+        <div class="main-content">
+            <div class="metrics-column">
+                <div class="metric-card">
+                    <div class="metric-value">AIH (SP)</div>
+                    <div class="metric-label">Dados detalhados por local de internação</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2024 - 2026</div>
+                    <div class="metric-label">Período de análise da produção hospitalar</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">Qtd. e Valor</div>
+                    <div class="metric-label">Métricas de aprovação processadas</div>
+                </div>
+            </div>
+            <div class="chart-column">
+                <div class="chart-container">
+                    <div class="chart-title">Distribuição de Valores Aprovados (Simulação)</div>
+                    <div style="height: 320px;">
+                        <canvas id="sihChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('sihChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan/24', 'Abr/24', 'Jul/24', 'Out/24', 'Jan/25', 'Abr/25'],
+                datasets: [{
+                    label: 'Valor Aprovado (R$)',
+                    data: [1200000, 1500000, 1100000, 1800000, 1400000, 1650000],
+                    backgroundColor: '#38B2AC',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#E2E8F0' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
