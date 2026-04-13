@@ -3,7 +3,6 @@
 ## 1. Título
 - **Projeto:** Monitoramento de Produção Hospitalar e Ambulatorial (SUS)
 - **Ferramentas:** Python, Playwright, SQLite, Streamlit, LaTeX
-- **Autor:** Manus AI
 - **Data:** Abril de 2026
 
 ## 2. Objetivos
