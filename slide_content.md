@@ -67,10 +67,8 @@
 - Implementação de modelos preditivos para demanda hospitalar.
 - Expansão da abrangência temporal.
 
-## 14. Perguntas?
-- Obrigado pela atenção!
-- Contato: manus@manus.im
+
 - Repositório: github.com/PiettroNaka/datasus-monitor-sus
 
-## 15. Encerramento
-- Fim da apresentação.
+
+
