@@ -33,5 +33,3 @@ streamlit run app.py
 ## 📊 Metodologia
 O projeto utiliza o Playwright para navegar no portal TabNet, superando desafios de frames e scripts legados. Os dados são extraídos para o período de Jan/2024 a Jan/2026, focando em quantidade e valor aprovado por município.
 
----
-Desenvolvido por **Manus AI**
