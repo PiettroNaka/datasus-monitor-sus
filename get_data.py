@@ -1,99 +1,133 @@
 import asyncio
 import os
+import re
+from dataclasses import dataclass
+from typing import List, Optional
+
+import pandas as pd
 from playwright.async_api import async_playwright
 
-async def get_datasus_data(url, group_name, content_label, periods, target_path):
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context()
+@dataclass
+class DataSUSExtractor:
+    '''High level helper for extracting TabNet data using Playwright.
+
+    Parameters
+    ----------
+    download_dir : str
+        Directory where downloaded CSV files are saved. If the
+        directory does not exist it will be created.
+    headless : bool
+        Whether to run the browser in headless mode. Default
+        True.
+    '''
+    download_dir: str = "."
+    headless: bool = True
+
+    def __post_init__(self) -> None:
+        os.makedirs(self.download_dir, exist_ok=True)
+
+    async def _init_browser(self):
+        '''Launch a Playwright Chromium browser and return context/page.'''
+        playwright = await async_playwright().start()
+        browser = await playwright.chromium.launch(headless=self.headless)
+        context = await browser.new_context(accept_downloads=True,
+                                            downloads_path=self.download_dir)
         page = await context.new_page()
-        
-        print(f"Extraindo {content_label} para {group_name}...")
+        return playwright, browser, context, page
+
+    async def fetch(self, dataset: str, start_period: str, end_period: str,
+                    row: str, column: Optional[str], contents: List[str]) -> pd.DataFrame:
+        '''Fetch TabNet data for a given dataset and return a DataFrame.'''
+        if dataset not in {"sia", "sih"}:
+            raise ValueError("dataset must be 'sia' or 'sih'")
+
+        start_year, start_month = map(int, start_period.split("-"))
+        end_year, end_month = map(int, end_period.split("-"))
+        periods = []
+        y, m = start_year, start_month
+        while (y < end_year) or (y == end_year and m <= end_month):
+            periods.append(f"{y:04d}-{m:02d}")
+            m += 1
+            if m > 12:
+                m = 1
+                y += 1
+
+        playwright, browser, context, page = await self._init_browser()
         try:
-            await page.goto(url, timeout=120000, wait_until="networkidle")
-            
-            # Linha: Município
-            try:
-                await page.select_option('select#L', label='Município')
-            except:
-                await page.select_option('select#L', index=0)
-            
-            # Coluna: Subgrupo proced.
-            try:
-                await page.select_option('select#C', label='Subgrupo proced.')
-            except:
-                options = await page.query_selector_all('select#C option')
-                for opt in options:
-                    text = await opt.inner_text()
-                    if 'Subgrupo' in text:
-                        val = await opt.get_attribute('value')
-                        await page.select_option('select#C', value=val)
-                        break
-
-            # Conteúdo
-            content_options = await page.query_selector_all('select#I option')
-            selected_val = None
-            for opt in content_options:
-                text = await opt.inner_text()
-                if content_label.lower() in text.lower() or ("quant" in content_label.lower() and "qtd" in text.lower()):
-                    selected_val = await opt.get_attribute('value')
-                    break
-            
-            if selected_val:
-                await page.select_option('select#I', value=selected_val)
+            if dataset == "sia":
+                url = "https://datasus.saude.gov.br/informacoes-de-saude-tabnet/producao-ambulatorial-sia-sus/"
             else:
-                print(f"Erro: {content_label} não encontrado.")
-                await browser.close()
-                return
+                url = "https://datasus.saude.gov.br/informacoes-de-saude-tabnet/producao-hospitalar-sih-sus/"
+            await page.goto(url)
 
-            # Períodos - Reduzir para 12 meses para evitar timeout
-            period_options = await page.query_selector_all('select#A option')
-            available_period_texts = [await opt.inner_text() for opt in period_options]
-            to_select_periods = [p for p in periods if p in available_period_texts][:12]
-            
-            await page.select_option('select#A', label=to_select_periods)
-            
-            # Opções Adicionais
-            try: await page.check('input#Z')
-            except: pass
-            await page.click('input[value="prn"]')
-            
-            # Submeter
-            async with context.expect_page(timeout=300000) as new_page_info:
-                await page.click('input[type="submit"]')
-            new_page = await new_page_info.value
-            await new_page.wait_for_load_state("networkidle", timeout=300000)
-            await asyncio.sleep(10) # Espera extra
-            
-            content = await new_page.inner_text('body')
-            if "Múltiplos conteúdos" in content:
-                print("Erro detectado na página de resultado: Múltiplos conteúdos.")
-                await browser.close()
-                return
+            frame = page.frame(name=re.compile("iframe", re.I))
+            if frame is None:
+                raise RuntimeError("Could not locate data entry frame.")
 
-            with open(target_path, "w", encoding="iso-8859-1") as f:
-                f.write(content)
-            print(f"Sucesso: {target_path} salvo ({len(content)} bytes)")
-            
-        except Exception as e:
-            print(f"Falha em {content_label}: {e}")
-        
-        await browser.close()
+            await frame.select_option("select[name='Lin']", label=row)
 
-async def main():
-    periods = ["Jan/2025", "Dez/2024", "Nov/2024", "Out/2024", "Set/2024", "Ago/2024", "Jul/2024", "Jun/2024", "Mai/2024", "Abr/2024", "Mar/2024", "Fev/2024"]
-    
-    sih_url = "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sih/cnv/spabr.def"
-    sia_url = "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sia/cnv/qabr.def"
-    
-    # Extrair um por um
-    await get_datasus_data(sih_url, "sih", "Quantidade aprovada", periods, "/home/ubuntu/data_sih_qtd.csv")
-    await asyncio.sleep(5)
-    await get_datasus_data(sih_url, "sih", "Valor aprovado", periods, "/home/ubuntu/data_sih_valor.csv")
-    await asyncio.sleep(5)
-    await get_datasus_data(sia_url, "sia", "Quantidade aprovada", periods, "/home/ubuntu/data_sia_qtd.csv")
-    await asyncio.sleep(5)
-    await get_datasus_data(sia_url, "sia", "Valor aprovado", periods, "/home/ubuntu/data_sia_valor.csv")
+            if column:
+                await frame.select_option("select[name='Col']", label=column)
+            else:
+                await frame.select_option("select[name='Col']", label=re.compile("não ativa", re.I))
+
+            for content_label in contents:
+                option = await frame.query_selector(f"select[name='Conteudo'] option[label='{content_label}']")
+                if option is None:
+                    raise RuntimeError(f"Content option '{content_label}' not found")
+                await option.click(modifiers=["Control"])
+
+            for period in periods:
+                option = await frame.query_selector(f"select[name='Periodo'] option[label*='{period}']")
+                if option:
+                    await option.click(modifiers=["Control"])
+
+            await frame.select_option("select[name='Form']", label=re.compile("ponto-e-vírgula", re.I))
+
+            submit_button = await frame.query_selector("input[type='submit']")
+            await submit_button.click()
+
+            await page.wait_for_selector("text=Copia como .CSV")
+            csv_link = await page.query_selector("text=Copia como .CSV")
+            download = await csv_link.click()
+
+            path = await download.path()
+            df = pd.read_csv(path, sep=';', decimal=',', encoding='latin-1')
+            return df
+        finally:
+            await context.close()
+            await browser.close()
+            await playwright.stop()
+
+    def to_sql(self, dataframe: pd.DataFrame, table_name: str,
+               sqlite_path: Optional[str] = None,
+               postgres_url: Optional[str] = None,
+               if_exists: str = "replace") -> None:
+        '''Persist a DataFrame to SQLite or PostgreSQL.'''
+        if sqlite_path:
+            import sqlite3
+            conn = sqlite3.connect(sqlite_path)
+            dataframe.to_sql(table_name, conn, if_exists=if_exists, index=False)
+            conn.commit()
+            conn.close()
+        if postgres_url:
+            from sqlalchemy import create_engine
+            engine = create_engine(postgres_url)
+            with engine.begin() as conn:
+                dataframe.to_sql(table_name, conn, if_exists=if_exists, index=False)
+
+async def main_example():
+    extractor = DataSUSExtractor(download_dir="./downloads")
+    df_sia = await extractor.fetch(
+        dataset="sia",
+        start_period="2024-01",
+        end_period="2024-01",
+        row="Município",
+        column=None,
+        contents=["Qtd. Aprovada", "Valor Aprovada"]
+    )
+    extractor.to_sql(df_sia, table_name="sia_producao", sqlite_path="datasus.db")
+    print(df_sia.head())
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main_example())
